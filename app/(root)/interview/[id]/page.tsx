@@ -7,7 +7,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
 
-const page = async ({ params }: RouteParams) => {
+const Page = async ({ params }: RouteParams) => {
   const { id } = await params;
   const user = await getCurrentUser();
   const interview = await getInterviewById(id);
@@ -33,7 +33,7 @@ const page = async ({ params }: RouteParams) => {
         </p>
       </div>
       <Agent
-        userName={user?.name}
+        userName={user?.name || ""}
         userId={user?.id}
         interviewId={interview?.id}
         type="interview"
@@ -43,4 +43,4 @@ const page = async ({ params }: RouteParams) => {
   );
 };
 
-export default page;
+export default Page;
